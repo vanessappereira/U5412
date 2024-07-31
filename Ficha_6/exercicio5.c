@@ -33,6 +33,35 @@ void separate(int arr[], int n)
             right--;
         }
     }
+    ordenarOdd(arr, left);
+    ordenarEven(arr, right);
+}
+
+void ordenarOdd(int arr[], int left)
+{
+    for (int i = 0; i < left; i++)
+    {
+        for (int j = i + 1; j < left; j++)
+        {
+            if (arr[i] > arr[j])
+            {
+                swap(&arr[i], &arr[j]);
+            }
+        }
+    }
+}
+void ordenarEven(int arr[], int right)
+{
+    for (int i = right; i < n; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            if (arr[i] > arr[j])
+            {
+                swap(&arr[i], &arr[j]);
+            }
+        }
+    }
 }
 void printArray(int arr[], int n)
 {
@@ -51,13 +80,13 @@ int main(int argc, char const *argv[])
     // Original Array
     printf("Original array: ");
     printArray(arr, n);
-    
+
     // Separate odd in left side and even in right
     separate(arr, n);
-    
+
     // Print the modified array
     printf("Modified array: ");
     printArray(arr, n);
-    
+
     return 0;
 }
