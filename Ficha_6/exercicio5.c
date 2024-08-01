@@ -8,37 +8,27 @@ void swap(int *a, int *b)
     *b = temp;
 }
 // Separate odd in left side and even in right
-void separate(int arr[], int n)
+void separateOddAndEven(int arr[], int n)
 {
-    int left = 0;
-    int right = n - 1;
+    int left = 0;      // Index for odd numbers
+    int right = n - 1; // Index for even numbers
 
     while (left < right)
     {
-        // if number in the left side is odd, move to next position
-        if (arr[left] % 2 != 0)
+        if (arr[left] % 2 == 0)
         {
-            left++;
-        }
-        // if number in the right side is even, move to previous position
-        else if (arr[right] % 2 == 0)
-        {
+            // If left element is even, swap it with right element
+            int temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
             right--;
         }
-        // if number in the left side is even and number in the right side is odd, swap
         else
         {
-            swap(&arr[left], &arr[right]);
             left++;
-            right--;
         }
     }
-    ordenarOdd(arr, left);
-    ordenarEven(arr, right);
-}
-
-void ordenarOdd(int arr[], int left)
-{
+    // sort ascending left
     for (int i = 0; i < left; i++)
     {
         for (int j = i + 1; j < left; j++)
@@ -49,10 +39,8 @@ void ordenarOdd(int arr[], int left)
             }
         }
     }
-}
-void ordenarEven(int arr[], int right)
-{
-    for (int i = right; i < n; i++)
+    // sort ascending right
+    for (int i = left; i < n; i++)
     {
         for (int j = i + 1; j < n; j++)
         {
@@ -63,6 +51,7 @@ void ordenarEven(int arr[], int right)
         }
     }
 }
+
 void printArray(int arr[], int n)
 {
     for (int i = 0; i < n; i++)
@@ -74,7 +63,7 @@ void printArray(int arr[], int n)
 
 int main(int argc, char const *argv[])
 {
-    int arr[] = {12, 44, 1, 23, 45, 13, 55, 65, 77};
+    int arr[] = {12, 44, 10, 23, 45, 14, 55, 65, 77};
     int n = sizeof(arr) / sizeof(arr[0]);
 
     // Original Array
@@ -82,7 +71,7 @@ int main(int argc, char const *argv[])
     printArray(arr, n);
 
     // Separate odd in left side and even in right
-    separate(arr, n);
+    separateOddAndEven(arr, n);
 
     // Print the modified array
     printf("Modified array: ");
