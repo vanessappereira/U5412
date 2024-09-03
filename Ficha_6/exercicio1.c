@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#define PI 3.14159265359
 void circleArea()
 {
     int r;
@@ -7,8 +7,8 @@ void circleArea()
 
     printf("--------Circle Area--------\nPlease insert a value:");
     scanf("%d", &r);
-    
-    result = 3.14 * r * r;
+
+    result = PI * r * r;
     printf("The area of the circle is: %f\n", result);
 }
 
