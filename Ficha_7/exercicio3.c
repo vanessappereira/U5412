@@ -6,37 +6,30 @@ Crie um array para armazenar os dados referentes aos 30 aeroportos públicos de 
     alterar ( )
 */
 
-#define MAX 30
-#define MAX_MUNICIPIO 51
-#define MAX_ICAO 5
-#define MAX_IATA 4
-#define MAX_NOME 51
+#define MAX 31
 
+// Definição de constantes
+#define MAX_AEROPORTOS 30
+#define MAX_MUNICIPIO 50
+#define MAX_ICAO 4
+#define MAX_IATA 3
+#define MAX_NOME 50
+
+// Definição da estrutura Aeroporto
 typedef struct
 {
-    char municipio[51];
-    char ICAO[5];
-    char IATA[4];
-    char nome[51];
-} aeroporto;
+    char municipio[MAX_MUNICIPIO + 1];
+    char ICAO[MAX_ICAO + 1];
+    char IATA[MAX_IATA + 1];
+    char nome[MAX_NOME + 1];
+} Aeroporto;
 
-aeroporto aeroportos[30];
+Aeroporto aeroportos[MAX];
 
 // Inserir Aeroportos
-void inserir(aeroporto aeroportos[], int *contador) {
-
-};
 
 // Listar Aeroporto
-void listar(aeroporto aeroportos[], int contador) {
-
-};
 
 // Procurar Aeroportos
-void procurar(aeroporto aeroportos[], int contador, char ICAO[5])
-{
 
-}
 // Alterar Aeroportos
-
-
