@@ -81,7 +81,7 @@ int main()
         printf("Nenhuma temperatura foi inserida.\n");
     }
 
-    // Liberar a memória alocada
+    // Libertar a memória alocada
     free(temps.temperaturas);
     return 0;
 }
