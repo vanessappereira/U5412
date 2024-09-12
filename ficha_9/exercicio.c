@@ -12,6 +12,7 @@ size_t nstrfile(const char *filename, const char *str)
     // Inicialização de variaveis
     int c;
     size_t count = 0;
+    char buffer[256]; // or use malloc and free
 
     FILE *file = fopen(filename, "r");
     if (file == NULL)
@@ -20,16 +21,35 @@ size_t nstrfile(const char *filename, const char *str)
         fprintf("Erro ao abrir o ficheiro: %s\n", filename);
         exit(1);
     }
+    char *buffer = malloc(strlen(str) + 1);
+    if (buffer == NULL)
+    {
+        // handle memory allocation error
+        fprintf(stderr, "Memory allocation failed\n");
+        exit(1);
+    }
     // Iterar por cada caratere encontrado no ficheiro
     while ((c = fgetc(file)) != EOF)
     {
         // Verificar se o caractere corresponde ao primeiro caractere da string
         if (c == str[0])
         {
-            // Se corresponder, aumenta a contagem
-            count++;
+            // Se corresponder, verifica se o resto da string corresponde
+            fseek(file, -1, SEEK_CUR); // retrocede um caractere
+            if (fgets(buffer, strlen(str) + 1, file) != NULL)
+            {
+                // Se corresponder, aumenta a contagem
+                if (strncmp(buffer, str, strlen(str)) == 0)
+                {
+                    count++;
+                }
+            }
+            // volta para a posição anterior
+            rewind(file);
+            free(buffer);
         }
     }
+
     // Fechar a leitura do ficheiro
     fclose(file);
 
