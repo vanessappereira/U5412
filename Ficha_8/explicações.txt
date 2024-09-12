@@ -1,0 +1,31 @@
+ O operador -> em C é utilizado para acessar membros (atributos ou métodos) de uma estrutura através de um ponteiro para essa estrutura. É uma forma mais concisa e elegante de realizar essa operação, comparado ao uso do operador de ponto (.) com o valor dereferenciado do ponteiro.
+    Por que usamos ->?
+
+    Clareza: O operador -> deixa claro que estamos trabalhando com um ponteiro para uma estrutura, tornando o código mais legível.
+    
+    Conveniência: Evita a necessidade de dereferenciar o ponteiro explicitamente antes de acessar os membros.
+    
+    Concisão: Torna o código mais conciso e fácil de escrever.
+    Como funciona:
+
+    Ponteiro para estrutura: O ptrPessoa aponta para a estrutura pessoa1.
+    Acesso ao membro: ptrPessoa->nome é equivalente a (*ptrPessoa).nome. O operador -> automaticamente dereferencia o ponteiro e acessa o membro nome da estrutura apontada.
+    
+    Em resumo:
+        .: Usa-se para acessar membros de uma estrutura diretamente a partir de uma variável do tipo da estrutura.
+        ->: Usa-se para acessar membros de uma estrutura através de um ponteiro para essa estrutura.
+        
+    Quando usar cada um:
+    Use . quando você tiver uma variável do tipo da estrutura.
+    Use -> quando você tiver um ponteiro para uma estrutura.
+
+
+Redimensionamento: A função realloc é usada para aumentar o tamanho do array dinamicamente.
+
+Armazenamento da média: A estrutura agora possui um campo media para armazenar a média atualizada.
+
+Cálculo eficiente da média: A fórmula utilizada para atualizar a média evita recalcular a soma de todas as temperaturas a cada inserção.
+
+Inicialização: A estrutura é inicializada com um ponteiro nulo para o array e tamanho zero.
+
+Libertação de memória: A memória alocada para o array é libertada no final usando free.
