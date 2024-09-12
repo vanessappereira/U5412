@@ -1,0 +1,8 @@
+Why change the type of the c variable to int to match the return type of fgetc?
+To match the return type of fgetc because fgetc returns an int, not a char. This is a common gotcha in C programming.
+
+The reason fgetc returns an int is that it needs to be able to return a special value, EOF (End Of File), to indicate that the end of the file has been reached. Since EOF is typically defined as -1, it can't be represented as a char (which is usually an unsigned type). By returning an int, fgetc can return both the character values (which fit in a char) and the special EOF value.
+
+If we had declared c as a char, we would risk losing the distinction between EOF and a valid character value. For example, if char is an unsigned type, EOF would be truncated to a large positive value, which could be mistaken for a valid character.
+
+By declaring c as an int, we ensure that we can correctly handle both character values and the EOF value returned by fgetc.
